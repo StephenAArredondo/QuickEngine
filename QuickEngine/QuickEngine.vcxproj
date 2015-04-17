@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{10EB68E1-A70E-45CC-B273-51E057EEC6E3}</ProjectGuid>
+    <RootNamespace>QuickEngine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>Source\Common;$(API_PATHS)\glew\include;$(API_PATHS)\glm;$(API_PATHS)\SDL2\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(API_PATHS)\SDL2\lib\$(PlatformShortName);$(API_PATHS)\glew\lib\Release\$(PlatformShortName);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(API_PATHS)\SDL2\include;$(API_PATHS)\glm;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(API_PATHS)\SDL2\lib\$(PlatformShortName);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Common.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(API_PATHS)\SDL2\lib\$(PlatformShortName)\*.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Common\Common.h" />
+    <ClInclude Include="Source\Components\BaseComponent.h" />
+    <ClInclude Include="Source\Components\CameraComponent.h" />
+    <ClInclude Include="Source\Components\Components.h" />
+    <ClInclude Include="Source\Components\ComponentType.h" />
+    <ClInclude Include="Source\Components\DebugComponent.h" />
+    <ClInclude Include="Source\Components\InputComponent.h" />
+    <ClInclude Include="Source\Components\MeshComponent.h" />
+    <ClInclude Include="Source\Components\RenderComponent.h" />
+    <ClInclude Include="Source\Components\TransformComponent.h" />
+    <ClInclude Include="Source\Game.h" />
+    <ClInclude Include="Source\Managers\BaseManager.h" />
+    <ClInclude Include="Source\Managers\CameraManager.h" />
+    <ClInclude Include="Source\Managers\ComponentManager.h" />
+    <ClInclude Include="Source\Managers\EntityManager.h" />
+    <ClInclude Include="Source\Managers\EventManager.h" />
+    <ClInclude Include="Source\Managers\GameStateManager.h" />
+    <ClInclude Include="Source\Managers\InputManager.h" />
+    <ClInclude Include="Source\Managers\Managers.h" />
+    <ClInclude Include="Source\Managers\MeshManager.h" />
+    <ClInclude Include="Source\Managers\ModelManager.h" />
+    <ClInclude Include="Source\Managers\TextureManager.h" />
+    <ClInclude Include="Source\States\BaseGameState.h" />
+    <ClInclude Include="Source\States\MainMenuState.h" />
+    <ClInclude Include="Source\States\States.h" />
+    <ClInclude Include="Source\Systems\DebugSystem.h" />
+    <ClInclude Include="Source\Systems\EntityProcessingSystem.h" />
+    <ClInclude Include="Source\Systems\EntitySystem.h" />
+    <ClInclude Include="Source\Systems\InputSystem.h" />
+    <ClInclude Include="Source\Systems\RenderSystem.h" />
+    <ClInclude Include="Source\Systems\Systems.h" />
+    <ClInclude Include="Source\Systems\TransformSystem.h" />
+    <ClInclude Include="Source\Utilities\Asset.h" />
+    <ClInclude Include="Source\Utilities\Camera.h" />
+    <ClInclude Include="Source\Utilities\Color.h" />
+    <ClInclude Include="Source\Utilities\Config.h" />
+    <ClInclude Include="Source\Utilities\Entity.h" />
+    <ClInclude Include="Source\Utilities\EntityEvents.h" />
+    <ClInclude Include="Source\Utilities\Event.h" />
+    <ClInclude Include="Source\Utilities\FPS.h" />
+    <ClInclude Include="Source\Utilities\Mat3.h" />
+    <ClInclude Include="Source\Utilities\Math.h" />
+    <ClInclude Include="Source\Utilities\Matrix.h" />
+    <ClInclude Include="Source\Utilities\MathUtil.h" />
+    <ClInclude Include="Source\Utilities\Mesh.h" />
+    <ClInclude Include="Source\Utilities\Model.h" />
+    <ClInclude Include="Source\Utilities\Object.h" />
+    <ClInclude Include="Source\Utilities\OpenGL.h" />
+    <ClInclude Include="Source\Utilities\Quaternion.h" />
+    <ClInclude Include="Source\Utilities\RAIIHelper.h" />
+    <ClInclude Include="Source\Utilities\Renderer.h" />
+    <ClInclude Include="Source\Utilities\SDLHelper.h" />
+    <ClInclude Include="Source\Utilities\Surface.h" />
+    <ClInclude Include="Source\Utilities\Texture.h" />
+    <ClInclude Include="Source\Utilities\Timer.h" />
+    <ClInclude Include="Source\Utilities\Utilities.h" />
+    <ClInclude Include="Source\Utilities\Vector2.h" />
+    <ClInclude Include="Source\Utilities\Vector3.h" />
+    <ClInclude Include="Source\Utilities\Vector4.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Common\Common.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Managers\CameraManager.cpp" />
+    <ClCompile Include="Source\Managers\EntityManager.cpp" />
+    <ClCompile Include="Source\Managers\EventManager.cpp" />
+    <ClCompile Include="Source\Managers\GameStateManager.cpp" />
+    <ClCompile Include="Source\Managers\InputManager.cpp" />
+    <ClCompile Include="Source\Managers\MeshManager.cpp" />
+    <ClCompile Include="Source\Managers\ModelManager.cpp" />
+    <ClCompile Include="Source\Managers\TextureManager.cpp" />
+    <ClCompile Include="Source\States\MainMenuState.cpp" />
+    <ClCompile Include="Source\Systems\DebugSystem.cpp" />
+    <ClCompile Include="Source\Systems\EntityProcessingSystem.cpp" />
+    <ClCompile Include="Source\Systems\EntitySystem.cpp" />
+    <ClCompile Include="Source\Systems\InputSystem.cpp" />
+    <ClCompile Include="Source\Systems\RenderSystem.cpp" />
+    <ClCompile Include="Source\Systems\TransformSystem.cpp" />
+    <ClCompile Include="Source\Utilities\Asset.cpp" />
+    <ClCompile Include="Source\Utilities\Camera.cpp" />
+    <ClCompile Include="Source\Utilities\Config.cpp" />
+    <ClCompile Include="Source\Utilities\FPS.cpp" />
+    <ClCompile Include="Source\Utilities\Matrix.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Mesh.cpp" />
+    <ClCompile Include="Source\Utilities\Model.cpp" />
+    <ClCompile Include="Source\Utilities\OpenGL.cpp" />
+    <ClCompile Include="Source\Utilities\Quaternion.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Renderer.cpp" />
+    <ClCompile Include="Source\Utilities\Surface.cpp" />
+    <ClCompile Include="Source\Utilities\Texture.cpp" />
+    <ClCompile Include="Source\Utilities\Timer.cpp" />
+    <ClCompile Include="Source\Utilities\Vector2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Vector3.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Vector4.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

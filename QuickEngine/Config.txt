@@ -1,0 +1,7 @@
+Video Configurations
+
+Screen Width: 800
+Screen Height: 600
+Full Screen: 0
+Borderless: 1
+Vertical Sync: 0
