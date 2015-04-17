@@ -1,7 +1,7 @@
 #ifndef __BASE_COMPONENT_H__
 #define __BASE_COMPONENT_H__
 
-#include "..\Utilities\Common.h"
+#include <Common.h>
 #include "ComponentType.h"
 
 using namespace EComponentType;

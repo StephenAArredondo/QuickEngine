@@ -1,20 +1,13 @@
-#ifndef __TRANSFORMSYSTEM_H__
-#define __TRANSFORMSYSTEM_H__
+#ifndef __TRANSFORM__SYSTEM_H__
+#define __TRANSFORM__SYSTEM_H__
 
-#include "EntityProcessingSystem.h"
-
-class TransformSystem : public EntityProcessingSystem
+class TransformSystem : public QSystem<TransformSystem>
 {
-protected:
-	virtual void ProcessEntity(EntityManager* _pManager, Entity* _pEntity);
-
 public:
-	TransformSystem(EventManager* _pEventManager, EntityManager* _pEntityManager);
-	virtual ~TransformSystem();
 
-	void Translate(Entity* _pEntity);
-	void Rotate(Entity* _pEntity);
-	void Scale(Entity* _pEntity);
+	TransformSystem() { }
+	
+	void update(QEntityManager& entities, QEventManager& events, QTimeDelta dt) override;
 
 };
 

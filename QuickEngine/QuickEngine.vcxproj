@@ -96,27 +96,28 @@
     <ClInclude Include="Source\Components\RenderComponent.h" />
     <ClInclude Include="Source\Components\TransformComponent.h" />
     <ClInclude Include="Source\Game.h" />
-    <ClInclude Include="Source\Managers\BaseManager.h" />
-    <ClInclude Include="Source\Managers\CameraManager.h" />
-    <ClInclude Include="Source\Managers\ComponentManager.h" />
-    <ClInclude Include="Source\Managers\EntityManager.h" />
-    <ClInclude Include="Source\Managers\EventManager.h" />
-    <ClInclude Include="Source\Managers\GameStateManager.h" />
-    <ClInclude Include="Source\Managers\InputManager.h" />
-    <ClInclude Include="Source\Managers\Managers.h" />
-    <ClInclude Include="Source\Managers\MeshManager.h" />
-    <ClInclude Include="Source\Managers\ModelManager.h" />
-    <ClInclude Include="Source\Managers\TextureManager.h" />
     <ClInclude Include="Source\States\BaseGameState.h" />
     <ClInclude Include="Source\States\MainMenuState.h" />
     <ClInclude Include="Source\States\States.h" />
     <ClInclude Include="Source\Systems\DebugSystem.h" />
-    <ClInclude Include="Source\Systems\EntityProcessingSystem.h" />
-    <ClInclude Include="Source\Systems\EntitySystem.h" />
     <ClInclude Include="Source\Systems\InputSystem.h" />
     <ClInclude Include="Source\Systems\RenderSystem.h" />
     <ClInclude Include="Source\Systems\Systems.h" />
     <ClInclude Include="Source\Systems\TransformSystem.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\3rdparty\catch.hpp" />
+    <ClInclude Include="Source\ThirdParty\EntityX\3rdparty\simplesignal.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\config.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\deps\Dependencies.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\Entity.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\entityx.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\EntityXWrapper.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\Event.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\help\NonCopyable.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\help\Pool.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\help\Timers.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\quick.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\System.h" />
+    <ClInclude Include="Source\ThirdParty\EntityX\tags\TagsComponent.h" />
     <ClInclude Include="Source\Utilities\Asset.h" />
     <ClInclude Include="Source\Utilities\Camera.h" />
     <ClInclude Include="Source\Utilities\Color.h" />
@@ -131,13 +132,17 @@
     <ClInclude Include="Source\Utilities\MathUtil.h" />
     <ClInclude Include="Source\Utilities\Mesh.h" />
     <ClInclude Include="Source\Utilities\Model.h" />
+    <ClInclude Include="Source\Utilities\NonCopyable.h" />
     <ClInclude Include="Source\Utilities\Object.h" />
     <ClInclude Include="Source\Utilities\OpenGL.h" />
     <ClInclude Include="Source\Utilities\Quaternion.h" />
     <ClInclude Include="Source\Utilities\RAIIHelper.h" />
     <ClInclude Include="Source\Utilities\Renderer.h" />
     <ClInclude Include="Source\Utilities\SDLHelper.h" />
+    <ClInclude Include="Source\Utilities\SDLUtil.h" />
+    <ClInclude Include="Source\Utilities\Singleton.h" />
     <ClInclude Include="Source\Utilities\Surface.h" />
+    <ClInclude Include="Source\Utilities\System.h" />
     <ClInclude Include="Source\Utilities\Texture.h" />
     <ClInclude Include="Source\Utilities\Timer.h" />
     <ClInclude Include="Source\Utilities\Utilities.h" />
@@ -151,23 +156,31 @@
     </ClCompile>
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\Managers\CameraManager.cpp" />
-    <ClCompile Include="Source\Managers\EntityManager.cpp" />
-    <ClCompile Include="Source\Managers\EventManager.cpp" />
-    <ClCompile Include="Source\Managers\GameStateManager.cpp" />
-    <ClCompile Include="Source\Managers\InputManager.cpp" />
-    <ClCompile Include="Source\Managers\MeshManager.cpp" />
-    <ClCompile Include="Source\Managers\ModelManager.cpp" />
-    <ClCompile Include="Source\Managers\TextureManager.cpp" />
     <ClCompile Include="Source\States\MainMenuState.cpp" />
     <ClCompile Include="Source\Systems\DebugSystem.cpp" />
-    <ClCompile Include="Source\Systems\EntityProcessingSystem.cpp" />
-    <ClCompile Include="Source\Systems\EntitySystem.cpp" />
     <ClCompile Include="Source\Systems\InputSystem.cpp" />
     <ClCompile Include="Source\Systems\RenderSystem.cpp" />
     <ClCompile Include="Source\Systems\TransformSystem.cpp" />
+    <ClCompile Include="Source\ThirdParty\EntityX\Entity.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\Event.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\help\Pool.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\help\Timers.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\System.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Source\Utilities\Asset.cpp" />
     <ClCompile Include="Source\Utilities\Camera.cpp" />
+    <ClCompile Include="Source\Utilities\Color.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Source\Utilities\Config.cpp" />
     <ClCompile Include="Source\Utilities\FPS.cpp" />
     <ClCompile Include="Source\Utilities\Matrix.cpp">

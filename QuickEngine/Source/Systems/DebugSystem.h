@@ -1,17 +1,14 @@
 #ifndef __DEBUGSYSTEM_H__
 #define __DEBUGSYSTEM_H__
 
-#include "EntityProcessingSystem.h"
-
-class DebugSystem : public EntityProcessingSystem
+class DebugSystem : public QSystem<DebugSystem>
 {
-protected:
-	virtual void ProcessEntity(EntityManager* _pManager, Entity* _pEntity);
-
 public:
-	DebugSystem(EventManager* _pEventManager, EntityManager* _pEntityManager);
-	virtual ~DebugSystem();
-	bool HandleEvent(IEventData const& _Event);
+
+	DebugSystem() { }
+
+	void update(QEntityManager& entities, QEventManager& events, QTimeDelta dt) override;
+
 };
 
 #endif

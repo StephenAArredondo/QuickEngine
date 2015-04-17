@@ -4,7 +4,7 @@
 #include "Camera.h"
 #include "Color.h"
 #include "Config.h"
-#include "Entity.h"
+/*#include "Entity.h"*/
 #include "EntityEvents.h"
 #include "Event.h"
 #include "FPS.h"

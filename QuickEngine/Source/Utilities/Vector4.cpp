@@ -1,4 +1,5 @@
 #include "MathUtil.h"
+#include "Math.h"
 
 QVector4::QVector4()
 {
@@ -43,25 +44,24 @@ float QVector4::magnitude()
 
 QVector4 QVector4::normalize()
 {
-	QVector4::Normalize((*this));
+	return QVector4::Normalize((*this));
 }
 
 float QVector4::sqrtMagnitude()
 {
-	QVector4::Dot((*this), (*this));
+	return QVector4::Dot((*this), (*this));
 }
 
-float QVector4::&operator[](int index)
+float QVector4::operator[](int index)
 {
-	if(index < 0 || index > 4)
+	switch (index)
 	{
-		// TODO: ASSERT Method
+		case 0:	return x;
+		case 1:	return y;
+		case 2:	return z;
+		case 3:	return w;
+		default: return 0.0f;
 	}
-
-	if(index == 0) return this->x;
-	if(index == 1) return this->y;
-	if(index == 2) return this->z;
-	if(index == 3) return this->w;
 }
 
 float QVector4::Distance(QVector4 a, QVector4 b)
@@ -105,7 +105,7 @@ QVector4 QVector4::MoveTowards(QVector4 current, QVector4 target, float maxDista
 QVector4 QVector4::Normalize(const QVector4& a)
 {
 	float num = QVector4::Magnitude(a);
-	return (num > fEpsilon) ? (a / num) : QVector4::zero();
+	return (num > fEpsilon) ? ((a) / num) : QVector4::zero();
 }
 
 void QVector4::Normalize(QVector4* a)
@@ -127,12 +127,6 @@ QVector4 QVector4::Scale(QVector4 a, QVector4 b)
 float QVector4::SqrMagnitude(QVector4 a)
 {
 	return QVector4::Dot(a, a);
-}
-
-void QVector4::Normalize()
-{
-	float num = QVector4::Magnitude((*this));
-	(*this) = (num > fEpsilon) ? ((*this) / num) : QVector4::zero();
 }
 
 void QVector4::Scale(QVector4 scale)
@@ -166,14 +160,19 @@ QVector4 QVector4::operator/(float d)
 	return QVector4(this->x / d, this->y / d, this->z / d, this->w / d);
 }
 
+QVector4 operator/(const QVector4& lhs, float d)
+{
+	return QVector4(lhs.x / d, lhs.y / d, lhs.z / d, lhs.w / d);
+}
+
 bool QVector4::operator==(const QVector4& rhs)
 {
-	return QVector4::SqrMagnitude(this - rhs) < 9.99999944E-11f;
+	return QVector4::SqrMagnitude((*this) - rhs) < 9.99999944E-11f;
 }
 
 bool QVector4::operator!=(const QVector4& rhs)
 {
-	return QVector4::SqrMagnitude(this - rhs) >= 9.99999944E-11f;
+	return QVector4::SqrMagnitude((*this) - rhs) >= 9.99999944E-11f;
 }
 
 QVector4 QVector4::operator*(float d)

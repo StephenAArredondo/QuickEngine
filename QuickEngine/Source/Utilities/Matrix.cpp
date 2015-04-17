@@ -1,46 +1,27 @@
 #include "MathUtil.h"
+#include "Math.h"
 
-float QMatrix::&operator[](int index)
+float QMatrix::operator[](int index)
 {
-	if(index < 0 || index > 15)
-	{
-		// TODO: ASSERT Method
-	}
-
 	switch(index)
 	{
-	case 0:
-		return m[0][0];
-	case 1:
-		return m[1][0];
-	case 2:
-		return m[2][0];
-	case 3:
-		return m[3][0];
-	case 4:
-		return m[0][1];
-	case 5:
-		return m[1][1];
-	case 6:
-		return m[2][1];
-	case 7:
-		return m[3][1];
-	case 8:
-		return m[0][2];
-	case 9:
-		return m[1][2];
-	case 10:
-		return m[2][2];
-	case 11:
-		return m[3][2];
-	case 12:
-		return m[0][3];
-	case 13:
-		return m[1][3];
-	case 14:
-		return m[2][3];
-	case 15:
-		return m[3][3];
+		case 0:	return m[0][0];
+		case 1:	return m[1][0];
+		case 2:	return m[2][0];
+		case 3:	return m[3][0];
+		case 4:	return m[0][1];
+		case 5:	return m[1][1];
+		case 6:	return m[2][1];
+		case 7:	return m[3][1];
+		case 8:	return m[0][2];
+		case 9:	return m[1][2];
+		case 10:return m[2][2];
+		case 11:return m[3][2];
+		case 12:return m[0][3];
+		case 13:return m[1][3];
+		case 14:return m[2][3];
+		case 15:return m[3][3];
+		default: return 0.0f;
 	}
 }
 
@@ -263,7 +244,7 @@ bool QMatrix::perspective(float fov, float aspect, float nearPlane, float farPla
 	if(fov <= 0.0f || fov >= 180.0f)
 		return false;
 
-	ymax = nearPlane * QMath::Tan(fov * QMath::PI() / 360.0f);
+	ymax = nearPlane * QMath::Tan(fov * PI / 360.0f);
 	ymin = -ymax;
 	xmin = ymin * aspect;
 	xmax = ymax * aspect;
@@ -439,8 +420,8 @@ void QMatrix::divideRow(int row, float scalar)
 
 void QMatrix::rotationAxis(const QVector3& vec, float angle)
 {
-	float cosine = QMath::Sin(2.0f * QMath::PI() * angle / 360.0f);
-	float sine = QMath::Cos(2.0f * QMath::PI() * angle / 360.0f);
+	float cosine = QMath::Sin(2.0f * PI * angle / 360.0f);
+	float sine = QMath::Cos(2.0f * PI * angle / 360.0f);
 
 	QVector3 axis(QVector3::Normalize(vec));
 
@@ -469,8 +450,8 @@ QMatrix QMatrix::RotationAxis(const QMatrix& mat, const QVector3& vec, float ang
 
 void QMatrix::rotateX(float angle)
 {
-	float sine = QMath::Sin(QMath::DegreeToRadian(angle));
-	float cosine = QMath::Cos(QMath::DegreeToRadian(angle));
+	float sine = QMath::Sin(QMath::DegreesToRadians(angle));
+	float cosine = QMath::Cos(QMath::DegreesToRadians(angle));
 
 	identity();
 
@@ -482,8 +463,8 @@ void QMatrix::rotateX(float angle)
 
 void QMatrix::rotateY(float angle)
 {
-	float sine = QMath::Sin(QMath::DegreeToRadian(angle));
-	float cosine = QMath::Cos(QMath::DegreeToRadian(angle));
+	float sine = QMath::Sin(QMath::DegreesToRadians(angle));
+	float cosine = QMath::Cos(QMath::DegreesToRadians(angle));
 
 	identity();
 
@@ -495,8 +476,8 @@ void QMatrix::rotateY(float angle)
 
 void QMatrix::rotateZ(float angle)
 {
-	float sine = QMath::Sin(QMath::DegreeToRadian(angle));
-	float cosine = QMath::Cos(QMath::DegreeToRadian(angle));
+	float sine = QMath::Sin(QMath::DegreesToRadians(angle));
+	float cosine = QMath::Cos(QMath::DegreesToRadians(angle));
 
 	identity();
 
@@ -506,14 +487,25 @@ void QMatrix::rotateZ(float angle)
 	m[1][1] = cosine;
 }
 
-bool QMatrix::operator==(QMatrix rhs)
+bool QMatrix::operator==(const QMatrix& rhs) const
 {
-	return ((this->getColumn(0) == rhs.getColumn(0)) && (this->getColumn(1) == rhs.getColumn(1)) && (this->getColumn(2) == rhs.getColumn(2)) && (this->getColumn(3) == rhs.getColumn(3)));
+	for (int col = 0; col < 4; col++)
+	{
+		for (int row = 0; row < 4; row++)
+		{
+			if (m[col][row] != rhs.m[col][row])
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
-bool QMatrix::operator!=(const QMatrix& rhs)
+bool QMatrix::operator!=(const QMatrix& rhs) const
 {
-	return !(this == rhs);
+	return !((*this) == rhs);
 }
 
 QVector4 QMatrix::operator*(const QVector4& v)

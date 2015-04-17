@@ -1,23 +1,13 @@
 #ifndef __RENDERSYSTEM_H__
 #define __RENDERSYSTEM_H__
 
-#include "EntityProcessingSystem.h"
-
-class Mesh;
-
-class RenderSystem : public EntityProcessingSystem
+class RenderSystem : public QSystem<RenderSystem>
 {
-protected:
-
-	virtual void Begin();
-	virtual void ProcessEntity(EntityManager* _pManager, Entity* _pEntity);
-	virtual void End();
-
-	virtual void Draw(Mesh* _pMesh);
-
 public:
-	RenderSystem(EventManager* _pEventManager, EntityManager* _pEntityManager);
-	virtual ~RenderSystem();
+
+	RenderSystem() { }
+
+	void update(QEntityManager& entities, QEventManager& events, QTimeDelta dt) override;
 
 };
 

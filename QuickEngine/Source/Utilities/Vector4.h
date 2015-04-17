@@ -60,9 +60,10 @@ struct QVector4
 
 	float SqrMagnitude();
 
-	float &operator[](int index);
+	float operator[](int index);
 	QVector4 operator+(const QVector4& rhs);
 	QVector4 operator/(float d);
+	friend QVector4 operator/(const QVector4& lhs, float d);
 	bool operator==(const QVector4& rhs);
 	bool operator!=(const QVector4& rhs);
 	QVector4 operator*(float d);

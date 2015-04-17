@@ -66,7 +66,7 @@ struct QVector2
 
 	void Set(float new_x, float new_y);
 
-	float &operator[](int index);
+	float operator[](int index);
 
 	QVector2 operator+(const QVector2& rhs);
 	QVector2 operator/(float d);

@@ -1,4 +1,5 @@
 #include "MathUtil.h"
+#include "Math.h"
 
 QVector2::QVector2()
 {
@@ -96,15 +97,14 @@ float QVector2::SqrMagnitude(const QVector2& a)
 	return ((temp.x * temp.x) + (temp.y * temp.y));
 }
 
-float QVector2::&operator[](int index)
+float QVector2::operator[](int index)
 {
-	if(index < 0 || index > 2)
+	switch (index)
 	{
-		// TODO: ASSERT Method
+		case 0:	return x;
+		case 1:	return y;
+		default: return 0.0f;
 	}
-
-	if(index == 0) return x;
-	if(index == 1) return y;
 }
 
 float QVector2::angle(const QVector2& to)
@@ -186,15 +186,15 @@ QVector2 QVector2::operator/(float d)
 
 bool QVector2::operator==(const QVector2& rhs)
 {
-	return QVector2::SqrMagnitude(this - rhs) < 9.99999944E-11f;
+	return QVector2::SqrMagnitude((*this) - rhs) < 9.99999944E-11f;
 }
 
 bool QVector2::operator!=(const QVector2& rhs)
 {
-	return QVector2::SqrMagnitude(this - rhs) >= 9.99999944E-11f;
+	return QVector2::SqrMagnitude((*this) - rhs) >= 9.99999944E-11f;
 }
 
-QVector2 QVector2::operator*(float d, const QVector2& rhs)
+QVector2 operator*(float d, const QVector2& rhs)
 {
 	return QVector2(rhs.x * d, rhs.y * d);
 }
@@ -208,5 +208,3 @@ QVector2 QVector2::operator-(const QVector2& rhs)
 {
 	return QVector2(rhs.x - this->x, rhs.y - this->y);
 }
-
-float QVector2::fEpsilon = 1.401298E-45f;

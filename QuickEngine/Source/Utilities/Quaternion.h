@@ -36,7 +36,7 @@ struct QQuaternion
 
 	void Set(float new_x, float new_y, float new_z, float new_w);
 
-	float &operator[](int index);
+	float operator[](int index);
 	bool operator==(const QQuaternion& rhs);
 	bool operator!=(const QQuaternion& rhs);
 	QQuaternion operator*(const QQuaternion& rhs);

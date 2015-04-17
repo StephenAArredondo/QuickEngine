@@ -1,4 +1,5 @@
 #include "MathUtil.h"
+#include "Math.h"
 
 QVector3 QVector3::back()
 {
@@ -69,16 +70,15 @@ float QVector3::sqrMagnitude()
 	return ((this->x * this->x) + (this->y * this->y) + (this->z * this->z));
 }
 
-float QVector3::&operator[](int index)
+float QVector3::operator[](int index)
 {
-	if(index < 0 || index > 3)
+	switch (index)
 	{
-		// TODO: ASSERT Method
+		case 0:	return x;
+		case 1:	return y;
+		case 2:	return z;
+		default: return 0.0f;
 	}
-
-	if(index == 0) return x;
-	if(index == 1) return y;
-	if(index == 2) return z;
 }
 
 QVector3::QVector3()
@@ -188,7 +188,7 @@ void QVector3::Normalize(QVector3* a)
 QVector3 QVector3::Project(QVector3 vector, QVector3 onNormal)
 {
 	float num = QVector3::Dot(onNormal, onNormal);
-	return (num < QMath::Epsilon()) ? QVector3::Zero() : (onNormal * QVector3::Dot(vector, onNormal) / num);
+	return (num < EPSILON) ? QVector3::Zero() : (onNormal * QVector3::Dot(vector, onNormal) / num);
 }
 
 QVector3 QVector3::ProjectOnPlane(QVector3 vector, QVector3 planeNormal)
@@ -251,14 +251,19 @@ QVector3 QVector3::operator/(float d)
 	return QVector3(this->x / d, this->y / d, this->z / d);
 }
 
+QVector3 operator/(const QVector3& lhs, float d)
+{
+	return QVector3(lhs.x / d, lhs.y / d, lhs.z / d);
+}
+
 bool QVector3::operator==(const QVector3& rhs)
 {
-	return QVector3::SqrMagnitude(this - rhs) < 9.99999944E-11f;
+	return QVector3::SqrMagnitude((*this) - rhs) < 9.99999944E-11f;
 }
 
 bool QVector3::operator!=(const QVector3& rhs)
 {
-	return QVector3::SqrMagnitude(this - rhs) >= 9.99999944E-11f;
+	return QVector3::SqrMagnitude((*this) - rhs) >= 9.99999944E-11f;
 }
 
 QVector3 QVector3::operator*(float d)
@@ -271,10 +276,7 @@ QVector3 QVector3::operator-(const QVector3& rhs)
 	return QVector3 (this->x - rhs.x, this->y - rhs.y, this->z - rhs.z);
 }
 
-QVector3 QVector3::operator*(float this, const QVector3& rhs)
+QVector3 operator*(float d, const QVector3& rhs)
 {
-	return QVector3(this * rhs.x, this * rhs.y, this * rhs.z);
+	return QVector3(d * rhs.x, d * rhs.y, d * rhs.z);
 }
-
-
-float QVector3::fEpsilon = 1.401298E-45f;

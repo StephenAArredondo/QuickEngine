@@ -1,152 +1,72 @@
 #ifndef __COLOR_H__
 #define __COLOR_H__
 
-#include "MathUtil.h"
-
-class CColor
+struct QColor
 {
-
-private:
-
 	float R;
 	float G;
 	float B;
 	float A;
 
-public:
+	QColor(float r, float g, float b, float a);
 
-	CColor (float r, float g, float b, float a) : R(r), G(g), B (b), A(a) {}
+	QColor(float r, float g, float b);
 
-	CColor (float r, float g, float b) : R(r), G(g), B (b), A(1.0f) {}
+	QColor operator+(QColor b);
 
-	CColor operator +(CColor b)
-	{
-		return CColor (R + b.R, G + b.G, B + b.B, A + b.A);
-	}
+	QColor operator-(QColor b);
+	
+	QColor operator*(QColor b);
 
-	CColor operator -(CColor b)
-	{
-		return CColor (R - b.R, G - b.G, B - b.B, A - b.A);
-	}
+	QColor operator*(float b);
 
-	CColor operator *(CColor b)
-	{
-		return CColor (R * b.R, G * b.G, B * b.B, A * b.A);
-	}
+	QColor operator/(float b);
 
-	CColor operator *(float b)
-	{
-		return CColor (R * b, G * b, B * b, A * b);
-	}
+	bool operator==(const QColor& rhs) const;
 
-	CColor operator /(float b)
-	{
-		return CColor (R / b, G / b, B / b, A / b);
-	}
+	bool operator!=(const QColor& rhs) const;
 
-	bool operator ==(const CColor& rhs) const
-	{
-		return (R == rhs.R && G == rhs.G && B == rhs.B && A == rhs.A);
-	}
+	float Grayscale();
 
-	bool operator !=(const CColor& rhs) const
-	{
-		return (R != rhs.R || G != rhs.G || B != rhs.B || A != rhs.A);
-	}
+	float operator[](unsigned int i);
 
-	SDL_Color GetColor() 
-	{ 
-		SDL_Color color = {R, G, B, A};
-		return color;
-	}
+	static QColor Red();
 
-	float Grayscale() { return 0.299f * R + 0.587f * G + 0.114f * B; }
+	static QColor Green();
 
-	float& operator [](unsigned int i)
-	{
-		switch(i)
-		{
-		case 0:
-			{
-				return R;
-			}
-		case 1:
-			{
-				return G;
-			}
-		case 2:
-			{
-				return B;
-			}
-		case 3:
-			{
-				return A;
-			}
-		}
-	}
+	static QColor Blue();
 
-	static CColor Red() { return CColor(1.0f, 0.0f, 0.0f, 1.0f); };
+	static QColor White();
 
-	static CColor Green() { return CColor(0.0f, 1.0f, 0.0f, 1.0f); }
+	static QColor Black();
 
-	static CColor Blue() { return CColor(0.0f, 0.0f, 1.0f, 1.0f); }
+	static QColor Yellow();
 
-	static CColor White() { return CColor(1.0f, 1.0f, 1.0f, 1.0f); }
+	static QColor Cyan();
 
-	static CColor Black() { return CColor(0.0f, 0.0f, 0.0f, 1.0f); }
+	static QColor Magenta();
 
-	static CColor Yellow() { return CColor(1.0f, 0.921568632f, 0.0156862754f, 1.0f); }
+	static QColor Gray();
 
-	static CColor Cyan() { return CColor(0.0f, 1.0f, 1.0f, 1.0f); }
+	static QColor Grey();
 
-	static CColor Magenta() { return CColor(1.0f, 0.0f, 1.0f, 1.0f); }
+	static QColor Clear();
 
-	static CColor Gray() { return CColor(0.5f, 0.5f, 0.5f, 1.0f); }
+	static QColor Lerp(QColor a, QColor b, float t);
 
-	static CColor Grey() { return CColor(0.5f, 0.5f, 0.5f, 1.0f); }
+	static QColor Add(QColor a, QColor b);
 
-	static CColor Clear() { return CColor(0.0f, 0.0f, 0.0f, 0.0f); }
+	static QColor Subtract(QColor a, QColor b);
 
-	static CColor Lerp(CColor a, CColor b, float t)
-	{
-		t = QMath::Clamp01(t);
-		return CColor (a.R + (b.R - a.R) * t, a.G + (b.G - a.G) * t, a.B + (b.B - a.B) * t, a.A + (b.A - a.A) * t);
-	}
+	static QColor Multiply(QColor a, QColor b);
 
-	static CColor Add(CColor a, CColor b)
-	{
-		return CColor (a.R + b.R, a.G + b.G, a.B + b.B, a.A + b.A);
-	}
+	static QColor Multiply(QColor a, float b);
 
-	static CColor Subtract(CColor a, CColor b)
-	{
-		return CColor (a.R - b.R, a.G - b.G, a.B - b.B, a.A - b.A);
-	}
+	static QColor Multiply(float b, QColor a);
 
-	static CColor Multiply(CColor a, CColor b)
-	{
-		return CColor (a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A);
-	}
+	static QColor Divide(QColor a, float b);
 
-	static CColor Multiply(CColor a, float b)
-	{
-		return CColor (a.R * b, a.G * b, a.B * b, a.A * b);
-	}
-
-	static CColor Multiply(float b, CColor a)
-	{
-		return CColor (a.R * b, a.G * b, a.B * b, a.A * b);
-	}
-
-	static CColor Divide(CColor a, float b)
-	{
-		return CColor (a.R / b, a.G / b, a.B / b, a.A / b);
-	}
-
-	static bool Equals(const CColor& lhs, const CColor& rhs)
-	{
-		return (lhs.R == rhs.R && lhs.G == rhs.G && lhs.B == rhs.B && lhs.A == rhs.A);
-	}
+	static bool Equals(const QColor& lhs, const QColor& rhs);
 };
 
 #endif//__COLOR_H__

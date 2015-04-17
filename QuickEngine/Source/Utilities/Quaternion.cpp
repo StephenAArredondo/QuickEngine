@@ -1,4 +1,5 @@
 #include "MathUtil.h"
+#include "Math.h"
 
 QQuaternion::QQuaternion()
 {
@@ -72,23 +73,15 @@ QQuaternion QQuaternion::Zero()
 // 		}
 // 	}
 
-float QQuaternion::&operator[](int index)
+float QQuaternion::operator[](int index)
 {
-	if(index < 0 || index > 4)
-	{
-		// TODO: ASSERT Method
-	}
-
 	switch(index)
 	{
-	case 0:
-		return x;
-	case 1:
-		return y;
-	case 2:
-		return z;
-	case 3:
-		return w;
+		case 0:	return x;
+		case 1:	return y;
+		case 2:	return z;
+		case 3:	return w;
+		default: return 0.0f;
 	}
 }
 
@@ -197,12 +190,12 @@ void QQuaternion::Set(float new_x, float new_y, float new_z, float new_w)
 
 bool QQuaternion::operator==(const QQuaternion& rhs)
 {
-	return QQuaternion::Dot(this, rhs) > 0.999999f;
+	return QQuaternion::Dot((*this), rhs) > 0.999999f;
 }
 
 bool QQuaternion::operator!=(const QQuaternion& rhs)
 {
-	return QQuaternion::Dot(this, rhs) <= 0.999999f;
+	return QQuaternion::Dot((*this), rhs) <= 0.999999f;
 }
 
 QQuaternion QQuaternion::operator*(const QQuaternion& rhs)
@@ -212,18 +205,19 @@ QQuaternion QQuaternion::operator*(const QQuaternion& rhs)
 
 QVector3 QQuaternion::operator*(const QVector3& point)
 {
-	float num = rotation.x * 2.0f;
-	float num2 = rotation.y * 2.0f;
-	float num3 = rotation.z * 2.0f;
-	float num4 = rotation.x * num;
-	float num5 = rotation.y * num2;
-	float num6 = rotation.z * num3;
-	float num7 = rotation.x * num2;
-	float num8 = rotation.x * num3;
-	float num9 = rotation.y * num3;
-	float num10 = rotation.w * num;
-	float num11 = rotation.w * num2;
-	float num12 = rotation.w * num3;
+	float num = this->x * 2.0f;
+	float num2 = this->y * 2.0f;
+	float num3 = this->z * 2.0f;
+	float num4 = this->x * num;
+	float num5 = this->y * num2;
+	float num6 = this->z * num3;
+	float num7 = this->x * num2;
+	float num8 = this->x * num3;
+	float num9 = this->y * num3;
+	float num10 = this->w * num;
+	float num11 = this->w * num2;
+	float num12 = this->w * num3;
+	
 	QVector3 result;
 	result.x =(1.0f -(num5 + num6)) * point.x +(num7 - num12) * point.y +(num8 + num11) * point.z;
 	result.y =(num7 + num12) * point.x +(1.0f -(num4 + num6)) * point.y +(num9 - num10) * point.z;

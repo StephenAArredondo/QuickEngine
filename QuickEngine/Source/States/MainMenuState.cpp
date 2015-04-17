@@ -1,6 +1,5 @@
 #include <Common.h>
 #include "MainMenuState.h"
-#include "..\Utilities\Common.h"
 
 MainMenuState* MainMenuState::GetInstance()
 {

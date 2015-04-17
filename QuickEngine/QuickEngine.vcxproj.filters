@@ -26,6 +26,24 @@
     <Filter Include="Common">
       <UniqueIdentifier>{977b4d56-8af7-4dc0-a75b-59053a9b79c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{b32de696-b82a-428d-8d85-93e6733a8ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\EntityX">
+      <UniqueIdentifier>{71ead747-baca-4230-869d-bcfed8fd6488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\EntityX\help">
+      <UniqueIdentifier>{e1d97468-30d2-4f63-9cd5-4a8f015aa06d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\EntityX\3rdParty">
+      <UniqueIdentifier>{154116bc-210d-4434-add8-e8ff44894ff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\EntityX\deps">
+      <UniqueIdentifier>{e0b306ed-e75e-437f-a353-a571b7834cf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\EntityX\tags">
+      <UniqueIdentifier>{2dc62666-e554-4634-946d-dd894458b78c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\BaseComponent.h">
@@ -64,44 +82,11 @@
     <ClInclude Include="Source\Utilities\Timer.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\DebugSystem.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Systems\InputSystem.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Systems\Systems.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Systems\TransformSystem.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\ComponentManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\EntityManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\EventManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\GameStateManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\ModelManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\TextureManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\States\BaseGameState.h">
       <Filter>States</Filter>
     </ClInclude>
     <ClInclude Include="Source\States\MainMenuState.h">
       <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Utilities\Entity.h">
-      <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities\EntityEvents.h">
       <Filter>Utilities</Filter>
@@ -127,17 +112,8 @@
     <ClInclude Include="Source\Utilities\Texture.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\EntityProcessingSystem.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Systems\EntitySystem.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Game.h">
       <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\Managers.h">
-      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities\Utilities.h">
       <Filter>Utilities</Filter>
@@ -145,29 +121,14 @@
     <ClInclude Include="Source\States\States.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Managers\InputManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Components\MeshComponent.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\MeshManager.h">
-      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Components\RenderComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\RenderSystem.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Components\CameraComponent.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\CameraManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\BaseManager.h">
-      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities\Asset.h">
       <Filter>Utilities</Filter>
@@ -205,6 +166,78 @@
     <ClInclude Include="Source\Utilities\Quaternion.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utilities\SDLUtil.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\Singleton.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\NonCopyable.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\config.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\Entity.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\entityx.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\Event.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\quick.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\System.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\help\NonCopyable.h">
+      <Filter>ThirdParty\EntityX\help</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\help\Pool.h">
+      <Filter>ThirdParty\EntityX\help</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\3rdparty\catch.hpp">
+      <Filter>ThirdParty\EntityX\3rdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\3rdparty\simplesignal.h">
+      <Filter>ThirdParty\EntityX\3rdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\deps\Dependencies.h">
+      <Filter>ThirdParty\EntityX\deps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\tags\TagsComponent.h">
+      <Filter>ThirdParty\EntityX\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\Entity.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\System.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\EntityXWrapper.h">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\DebugSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\InputSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\RenderSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\Systems.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\TransformSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\EntityX\help\Timers.h">
+      <Filter>ThirdParty\EntityX\help</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Utilities\Camera.cpp">
@@ -218,30 +251,6 @@
     </ClCompile>
     <ClCompile Include="Source\Utilities\Timer.cpp">
       <Filter>Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Systems\DebugSystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Systems\InputSystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Systems\TransformSystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\EntityManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\EventManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\GameStateManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\ModelManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\TextureManager.cpp">
-      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Source\States\MainMenuState.cpp">
       <Filter>States</Filter>
@@ -261,29 +270,11 @@
     <ClCompile Include="Source\Utilities\Texture.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Systems\EntityProcessingSystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Systems\EntitySystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game.cpp">
       <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\InputManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\MeshManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Systems\RenderSystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\CameraManager.cpp">
-      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Source\Utilities\Asset.cpp">
       <Filter>Utilities</Filter>
@@ -308,6 +299,36 @@
     </ClCompile>
     <ClCompile Include="Source\Utilities\Quaternion.cpp">
       <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Color.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\Entity.cc">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\Event.cc">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\System.cc">
+      <Filter>ThirdParty\EntityX</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\help\Pool.cc">
+      <Filter>ThirdParty\EntityX\help</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\DebugSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\InputSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\RenderSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\TransformSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdParty\EntityX\help\Timers.cc">
+      <Filter>ThirdParty\EntityX\help</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

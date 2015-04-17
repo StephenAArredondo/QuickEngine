@@ -1,5 +1,5 @@
-#ifndef __MATHF_H__
-#define __MATHF_H__
+#ifndef __MATH_UTIL_H__
+#define __MATH_UTIL_H__
 
 #include <math.h>
 
@@ -11,6 +11,7 @@ struct QVector3;
 struct QVector4;
 struct QMatrix;
 struct QQuaternion;
+struct QColor;
 
 //////////////////////////////////////////////////////////////////////////
 // Constants
@@ -346,4 +347,4 @@ struct QMath
 	}
 };
 
-#endif//__MATHF_H__
+#endif//__MATH_UTIL_H__

@@ -4,17 +4,15 @@
 
 Game::Game()
 {
-	m_pEntityManager = NULL;
-	m_pEventManager = NULL;
+	m_EntityManager = NULL;
+	m_EventManager = NULL;
+	m_SystemManager = NULL;
 	
 	m_pConfig = NULL;
 	m_pOpenGL = NULL;
 	m_pRenderer = NULL;
-	m_pGameStateManager = NULL;
+	//m_pGameStateManager = NULL;
 	m_bRunning = true;
-
-	m_vSystems.clear();
-	m_vManagers.clear();
 }
 Game::~Game()
 {
@@ -26,9 +24,12 @@ void Game::Start()
 	m_pConfig = Config::GetInstance();
 	m_pOpenGL = OpenGL::GetInstance();
 	m_pRenderer = Renderer::GetInstance();
+	
+	m_EventManager = new QEventManager();
+	m_EntityManager = new QEntityManager((*m_EventManager));
+	m_SystemManager = new QSystemManager((*m_EntityManager), (*m_EventManager));
 
-	m_pGameStateManager = GameStateManager::GetInstance();
-	m_pEventManager = new EventManager();
+	//m_pGameStateManager = GameStateManager::GetInstance();
 	
 	LoadSystems();
 
@@ -39,11 +40,13 @@ void Game::Start()
 
 	// create the window
 	m_Window = SDL_CreateWindow("Quick Engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
+	m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
+	SDL_SetRenderDrawColor(m_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	m_pOpenGL->InitGL();
 
-	InitializeManagers();
-	m_pGameStateManager->Initialize();
+	//InitializeManagers();
+	//m_pGameStateManager->Initialize();
 }
 
 void Game::GameLoop()
@@ -63,15 +66,11 @@ void Game::GameLoop()
 	while(m_bRunning)
 	{
 		CheckEvents();
+		m_SystemManager->update_all(0.01f);
 
-		std::map<int, std::vector<EntitySystem*>>::iterator pSystemIter = m_vSystems.begin();
-		while(pSystemIter != m_vSystems.end())
-		{
-			for(unsigned int nIndex = 0; nIndex < pSystemIter->second.size(); ++nIndex)
-				pSystemIter->second[nIndex]->Process();
-
-			++pSystemIter;
-		}		
+		SDL_RenderClear(m_Renderer);
+		//SDL_RenderCopy(m_Renderer);
+		SDL_RenderPresent(m_Renderer);
 	}
 
 //	m_pEntityManager->DestroyEntity(entity);
@@ -82,7 +81,7 @@ void Game::CheckEvents()
 	bool bAltPressed = false;
 	bool bResized = false;
 
-	GetInputManager->ClearKeys();
+//	GetInputManager->ClearKeys();
 
 	// handle events
 	while (m_bRunning && SDL_PollEvent(&m_Event))
@@ -113,7 +112,7 @@ void Game::CheckEvents()
 		// Any Keys pressed
 		else if (m_Event.type == SDL_KEYDOWN)
 		{
-			GetInputManager->AddKey(m_Event.key.keysym.scancode);
+			//GetInputManager->AddKey(m_Event.key.keysym.scancode);
 
 			//////////////////////////////////////////////////////////////////////////
 			// Window Close Event
@@ -246,19 +245,24 @@ void Game::SetWindowStyle()
 
 void Game::Shutdown()
 {
-	UnloadSystems();
-	UnloadManagers();
+	//UnloadSystems();
+	//UnloadManagers();
 
-	delete m_pEventManager;
+	delete m_EventManager;
+	m_EventManager = NULL;
 
-	m_pEventManager = NULL;
+	delete m_EntityManager;
+	m_EntityManager = NULL;
+
+	delete m_SystemManager;
+	m_SystemManager = NULL;
 
 	m_pConfig->SaveConfig();
 	m_pOpenGL->Shutdown();
 	m_pRenderer->Shutdown();
 
-	m_pGameStateManager->Shutdown();
-	m_pGameStateManager = NULL;
+// 	m_pGameStateManager->Shutdown();
+// 	m_pGameStateManager = NULL;
 
 	m_pConfig = NULL;
 	m_pOpenGL = NULL;
@@ -319,52 +323,53 @@ void Game::DrawShapes()
 
 void Game::LoadSystems()
 {
-	m_vSystems[0].push_back(new InputSystem(m_pEventManager, m_pEntityManager));
-	m_vSystems[1].push_back(new TransformSystem(m_pEventManager, m_pEntityManager));
-	m_vSystems[3].push_back(new DebugSystem(m_pEventManager, m_pEntityManager));
-	m_vSystems[5].push_back(new RenderSystem(m_pEventManager, m_pEntityManager));
+	m_SystemManager->add<InputSystem>();
+	m_SystemManager->add<TransformSystem>();
+	m_SystemManager->add<DebugSystem>();
+	m_SystemManager->add<RenderSystem>();
+	m_SystemManager->configure();
 }
 
 void Game::UnloadSystems()
 {
-	std::map<int, std::vector<EntitySystem*>>::iterator pSystemIter = m_vSystems.begin();
-	while(pSystemIter != m_vSystems.end())
-	{
-		for(unsigned int nIndex = 0; nIndex < pSystemIter->second.size(); ++nIndex)
-		{
-			delete pSystemIter->second[nIndex];
-			pSystemIter->second[nIndex] = NULL;
-		}
-
-		pSystemIter->second.clear();
-
-		++pSystemIter;
-	}
-
-	m_vSystems.clear();
+// 	std::map<int, std::vector<EntitySystem*>>::iterator pSystemIter = m_vSystems.begin();
+// 	while(pSystemIter != m_vSystems.end())
+// 	{
+// 		for(unsigned int nIndex = 0; nIndex < pSystemIter->second.size(); ++nIndex)
+// 		{
+// 			delete pSystemIter->second[nIndex];
+// 			pSystemIter->second[nIndex] = NULL;
+// 		}
+// 
+// 		pSystemIter->second.clear();
+// 
+// 		++pSystemIter;
+// 	}
+// 
+// 	m_vSystems.clear();
 }
 
 void Game::LoadManagers()
 {
-	m_vManagers.push_back(GetTextureManager);
-	m_vManagers.push_back(GetInputManager);
-	m_vManagers.push_back(GetMeshManager);
-	m_vManagers.push_back(GetCameraManager);
+// 	m_vManagers.push_back(GetTextureManager);
+// 	m_vManagers.push_back(GetInputManager);
+// 	m_vManagers.push_back(GetMeshManager);
+// 	m_vManagers.push_back(GetCameraManager);
 }
 
 void Game::InitializeManagers()
 {
-	for(unsigned int nIndex = 0; nIndex < m_vManagers.size(); ++nIndex)
-		m_vManagers[nIndex]->Initialize();
+// 	for(unsigned int nIndex = 0; nIndex < m_vManagers.size(); ++nIndex)
+// 		m_vManagers[nIndex]->Initialize();
 }
 
 void Game::UnloadManagers()
 {
-	for(unsigned int nIndex = 0; nIndex < m_vManagers.size(); ++nIndex)
-	{
-		m_vManagers[nIndex]->Shutdown();
-		m_vManagers[nIndex] = NULL;
-	}
-
-	m_vManagers.clear();
+// 	for(unsigned int nIndex = 0; nIndex < m_vManagers.size(); ++nIndex)
+// 	{
+// 		m_vManagers[nIndex]->Shutdown();
+// 		m_vManagers[nIndex] = NULL;
+// 	}
+// 
+// 	m_vManagers.clear();
 }

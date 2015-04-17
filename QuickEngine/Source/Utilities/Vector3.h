@@ -37,7 +37,7 @@ public:
 
 	float sqrMagnitude();
 
-	float &operator[](int index);
+	float operator[](int index);
 
 	QVector3();
 
@@ -109,10 +109,11 @@ public:
 
 	QVector3 operator+(const QVector3& rhs);
 	QVector3 operator/(float d);
+	friend QVector3 operator/(const QVector3& rhs, float d);
 	bool operator==(const QVector3& rhs);
 	bool operator!=(const QVector3& rhs);
 	QVector3 operator*(float d);
-	QVector3 operator*(const QVector3& rhs);
+	friend QVector3 operator*(float d, const QVector3& rhs);
 	QVector3 operator-(const QVector3& rhs);
 };
 

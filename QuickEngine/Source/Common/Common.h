@@ -8,46 +8,18 @@
 #include <list>
 
 //////////////////////////////////////////////////////////////////////////
-// SFML Headers
-#include <SDL_assert.h>
-// #include <SDL_audio.h>
-// #include <SDL_config.h>
-// #include <SDL_cpuinfo.h>
-// #include <SDL_error.h>
-// #include <SDL_filesystem.h>
-// #include <SDL_gamecontroller.h>
-// #include <SDL_image.h>
-// #include <SDL_joystick.h>
-#include <SDL_keyboard.h>
-#include <SDL_keycode.h>
-// #include <SDL_log.h>
-#include <SDL_main.h>
-// #include <SDL_mixer.h>
-// #include <SDL_mouse.h>
-// #include <SDL_mutex.h>
-// #include <SDL_name.h>
-// #include <SDL_net.h>
-#include <SDL_opengl.h>
-// #include <SDL_pixels.h>
-// #include <SDL_platform.h>
-// #include <SDL_quit.h>
-#include <SDL_rect.h>
-#include <SDL_render.h>
-// #include <SDL_shape.h>
-#include <SDL_surface.h>
-// #include <SDL_system.h>
-// #include <SDL_syswm.h>
-// #include <SDL_thread.h>
-#include <SDL_timer.h>
- #include <SDL_types.h>
+// SDL Headers
+#include "..\Utilities\SDLUtil.h"
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
 // Other
 
 #include "..\Utilities\MathUtil.h"
-
 #include "..\Utilities\Math.h"
+
+#include "..\ThirdParty\EntityX\EntityXWrapper.h"
+
 
 #define INVALID_RESOURCE_ID UINT_MAX
 
@@ -63,5 +35,15 @@ typedef uint32_t Quint32;
 //const double Q_PI = 3.14159265358979323846264338327950288;
 
 #define QE_assert SDL_assert
+
+static SDL_Color ToSDLColor(const QColor& color)
+{
+	SDL_Color sColor;
+	sColor.r = (Uint8)color.R;
+	sColor.g = (Uint8)color.G;
+	sColor.b = (Uint8)color.B;
+	sColor.a = (Uint8)color.A;
+	return sColor;
+}
 
 #endif

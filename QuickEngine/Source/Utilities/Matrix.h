@@ -84,11 +84,11 @@ struct QMatrix
 
 	void rotateZ(float angle);
 
-	float &operator[](int index);
+	float operator[](int index);
 
-	bool operator==(QMatrix rhs);
+	bool operator==(const QMatrix& rhs) const;
 
-	bool operator!=(const QMatrix& rhs);
+	bool operator!=(const QMatrix& rhs) const;
 
 	QVector4 operator*(const QVector4& v);
 
