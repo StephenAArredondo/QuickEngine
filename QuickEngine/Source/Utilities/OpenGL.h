@@ -1,8 +1,6 @@
 #ifndef _OPENGL_H_
 #define _OPENGL_H_
 
-#include <Common.h>
-
 class Config;
 
 class OpenGL

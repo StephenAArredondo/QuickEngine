@@ -1,8 +1,6 @@
 #ifndef _FPS_H_
 #define _FPS_H_
 
-#include <Common.h>
-
 class FPS
 {
 private:

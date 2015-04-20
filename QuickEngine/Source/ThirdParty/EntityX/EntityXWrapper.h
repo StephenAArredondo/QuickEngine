@@ -22,6 +22,12 @@ using QSystemManager = entityx::SystemManager;
 using QTimeDelta = entityx::TimeDelta;
 
 template<typename Derived>
-using QComponentHandle = entityx::ComponentHandle < Derived > ;
+using QComponentHandle = entityx::ComponentHandle<Derived>;
+
+template<typename Derived>
+using QComponent = entityx::Component<Derived> ;
+
+template<typename Derived>
+using QReceiver = entityx::Receiver <Derived> ;
 
 #endif//__ENTITYX_WRAPPER_H__

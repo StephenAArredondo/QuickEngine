@@ -1,25 +1,32 @@
-#ifndef _COMMON_H_
-#define _COMMON_H_
+#ifndef __COMMON_H__
+#define __COMMON_H__
 
 #include <cstdint>
 #include <string>
 #include <vector>
 #include <map>
 #include <list>
+#include <iostream>
 
 //////////////////////////////////////////////////////////////////////////
-// SDL Headers
+// Utility Headers
+
 #include "..\Utilities\SDLUtil.h"
-//////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////
-// Other
+typedef SDL_Scancode QKey;
+using QGLContext = SDL_GLContext;
+typedef SDL_Renderer QRenderContext;
+typedef SDL_Window QWindow;
+
+#include "..\ThirdParty\ThirdParties.h"
 
 #include "..\Utilities\MathUtil.h"
 #include "..\Utilities\Math.h"
+#include "..\Utilities\Utilities.h"
 
-#include "..\ThirdParty\EntityX\EntityXWrapper.h"
-
+#include "..\Components\Components.h"
+#include "..\Events\Events.h"
+#include "..\Systems\Systems.h"
 
 #define INVALID_RESOURCE_ID UINT_MAX
 
@@ -30,9 +37,6 @@ typedef int16_t Qint16;
 typedef uint16_t Quint16;
 typedef int32_t Qint32;
 typedef uint32_t Quint32;
-
-// Constants
-//const double Q_PI = 3.14159265358979323846264338327950288;
 
 #define QE_assert SDL_assert
 
@@ -46,4 +50,4 @@ static SDL_Color ToSDLColor(const QColor& color)
 	return sColor;
 }
 
-#endif
+#endif//__COMMON_H__

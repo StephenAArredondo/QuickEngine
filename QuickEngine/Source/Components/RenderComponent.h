@@ -1,12 +1,9 @@
-#ifndef __RENDERCOMPONENT_H__
-#define __RENDERCOMPONENT_H__
+#ifndef __RENDER_COMPONENT_H__
+#define __RENDER_COMPONENT_H__
 
-#include "BaseComponent.h"
-
-class RenderComponent : public BaseComponent
+struct RenderComponent : public QComponent<RenderComponent>
 {
-public:
-	RenderComponent() : BaseComponent(CT_RENDERING) {}
+	RenderComponent() { }
 };
 
-#endif
+#endif//__RENDER_COMPONENT_H__

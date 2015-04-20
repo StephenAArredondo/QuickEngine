@@ -1,26 +1,22 @@
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
-class CTimer
+struct QTimer
 {
-private:
-
-	Quint32	m_startTime;
-	Quint32	m_pausedTime;
-
+	uint32_t	m_startTime;
+	uint32_t	m_pausedTime;
 	bool m_started;
 	bool m_paused;
 
-public:
-	CTimer(void);
-	~CTimer(void);
+	QTimer(void);
+	~QTimer(void);
 
 	void start();
 	void stop();
 	void pause();
 	void unpause();
 
-	Quint32 getMilliseconds();
+	uint32_t getMilliseconds();
 	float getSeconds();
 
 	bool isStarted();

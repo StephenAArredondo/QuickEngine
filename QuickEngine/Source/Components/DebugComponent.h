@@ -1,15 +1,11 @@
-#ifndef __DEBUGCOMPONENT_H__
-#define __DEBUGCOMPONENT_H__
+#ifndef __DEBUG_COMPONENT_H__
+#define __DEBUG_COMPONENT_H__
 
-#include "BaseComponent.h"
-
-class DebugComponent : public BaseComponent
+struct DebugComponent : QComponent < DebugComponent >
 {
-public:
-	DebugComponent() : BaseComponent(CT_DEBUG), m_strDebugString("") {}
-	
-	std::string m_strDebugString;
+	DebugComponent(QString debugString) : m_DebugString(debugString) { }
 
+	QString m_DebugString;
 };
 
-#endif
+#endif//__TRANSFORM_COMPONENT_H__

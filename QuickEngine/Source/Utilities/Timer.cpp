@@ -1,7 +1,7 @@
 #include <Common.h>
 #include "Timer.h"
 
-CTimer::CTimer()
+QTimer::QTimer()
 {
 	m_startTime = 0;
 	m_pausedTime = 0;
@@ -9,9 +9,9 @@ CTimer::CTimer()
 	m_paused = false;
 }
 
-CTimer::~CTimer(){}
+QTimer::~QTimer(){}
 
-void CTimer::start()
+void QTimer::start()
 {
 	m_started = true;
 	m_paused = false;
@@ -20,7 +20,7 @@ void CTimer::start()
 	m_pausedTime = 0;
 }
 
-void CTimer::stop()
+void QTimer::stop()
 {
 	m_started = false;
 	m_paused = true;
@@ -29,7 +29,7 @@ void CTimer::stop()
 	m_pausedTime = 0;
 }
 
-void CTimer::pause()
+void QTimer::pause()
 {
 	if(m_started && !m_paused)
 	{
@@ -40,7 +40,7 @@ void CTimer::pause()
 	}
 }
 
-void CTimer::unpause()
+void QTimer::unpause()
 {
 	if(m_started && m_paused)
 	{
@@ -51,7 +51,7 @@ void CTimer::unpause()
 	}
 }
 
-Uint32 CTimer::getMilliseconds()
+uint32_t QTimer::getMilliseconds()
 {
 	Uint32 time = 0;
 
@@ -70,17 +70,17 @@ Uint32 CTimer::getMilliseconds()
 	return time;
 }
 
-float CTimer::getSeconds()
+float QTimer::getSeconds()
 {
 	return getMilliseconds() * 0.001f;
 }
 
-bool CTimer::isStarted()
+bool QTimer::isStarted()
 { 
 	return m_started; 
 }
 
-bool CTimer::isPaused()
+bool QTimer::isPaused()
 { 
 	return m_paused; 
 }

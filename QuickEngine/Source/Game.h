@@ -1,25 +1,10 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
-#include <Common.h>
-#include "Utilities\Config.h"
-#include "Utilities\Renderer.h"
-#include "Utilities\Timer.h"
-#include "Utilities\OpenGL.h"
-#include "Utilities\FPS.h"
-#include "Utilities\Camera.h"
-//#include "Utilities\Mesh.h"
-
-#include "Systems\Systems.h"
-#include "Components\Components.h"
-
-
-class Game
+class Game : public QReceiver<Game>
 {
 private:
 
-	// Systems
-	
 	// Managers
 	QEntityManager* m_EntityManager;
 	QEventManager* m_EventManager;
@@ -28,16 +13,15 @@ private:
 	//GameStateManager* m_pGameStateManager;
 
 	SDL_Window* m_Window;
-	SDL_Event m_Event;
+	SDL_GLContext m_GLContext;
 	bool m_bRunning;
-	CTimer m_Timer;
+	QTimer m_Timer;
 	SDL_Renderer* m_Renderer;
 
 	FPS m_FPS;
 
 	Config* m_pConfig;
 	OpenGL* m_pOpenGL;
-	Renderer* m_pRenderer;
 
 	Camera m_Camera;
 
@@ -53,16 +37,14 @@ public:
 	void LoadSystems();
 	void UnloadSystems();
 
-	void LoadManagers();
-	void InitializeManagers();
-	void UnloadManagers();
-
 	void GameLoop();
 	void Shutdown();
 	void Draw();
 
 	void DrawShapes();
 	void DrawGrid();
+
+	void receive(const InputEvent& input);
 };
 
 #endif

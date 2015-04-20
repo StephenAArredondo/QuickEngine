@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>Source\Common;$(API_PATHS)\glew\include;$(API_PATHS)\glm;$(API_PATHS)\SDL2\include;$(IncludePath)</IncludePath>
+    <IncludePath>Source\Common;Source\ThirdParty;$(API_PATHS)\glew\include;$(API_PATHS)\glm;$(API_PATHS)\SDL2\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(API_PATHS)\SDL2\lib\$(PlatformShortName);$(API_PATHS)\glew\lib\Release\$(PlatformShortName);$(LibraryPath)</LibraryPath>
@@ -95,10 +95,16 @@
     <ClInclude Include="Source\Components\MeshComponent.h" />
     <ClInclude Include="Source\Components\RenderComponent.h" />
     <ClInclude Include="Source\Components\TransformComponent.h" />
+    <ClInclude Include="Source\Enumerations\CameraProjection.h" />
+    <ClInclude Include="Source\Events\Events.h" />
+    <ClInclude Include="Source\Events\InputEvents.h" />
+    <ClInclude Include="Source\Events\TransformEvents.h" />
+    <ClInclude Include="Source\Events\WindowEvents.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\States\BaseGameState.h" />
     <ClInclude Include="Source\States\MainMenuState.h" />
     <ClInclude Include="Source\States\States.h" />
+    <ClInclude Include="Source\Systems\CameraSystem.h" />
     <ClInclude Include="Source\Systems\DebugSystem.h" />
     <ClInclude Include="Source\Systems\InputSystem.h" />
     <ClInclude Include="Source\Systems\RenderSystem.h" />
@@ -118,13 +124,13 @@
     <ClInclude Include="Source\ThirdParty\EntityX\quick.h" />
     <ClInclude Include="Source\ThirdParty\EntityX\System.h" />
     <ClInclude Include="Source\ThirdParty\EntityX\tags\TagsComponent.h" />
+    <ClInclude Include="Source\ThirdParty\ThirdParties.h" />
     <ClInclude Include="Source\Utilities\Asset.h" />
     <ClInclude Include="Source\Utilities\Camera.h" />
     <ClInclude Include="Source\Utilities\Color.h" />
     <ClInclude Include="Source\Utilities\Config.h" />
     <ClInclude Include="Source\Utilities\Entity.h" />
     <ClInclude Include="Source\Utilities\EntityEvents.h" />
-    <ClInclude Include="Source\Utilities\Event.h" />
     <ClInclude Include="Source\Utilities\FPS.h" />
     <ClInclude Include="Source\Utilities\Mat3.h" />
     <ClInclude Include="Source\Utilities\Math.h" />
@@ -141,6 +147,7 @@
     <ClInclude Include="Source\Utilities\SDLHelper.h" />
     <ClInclude Include="Source\Utilities\SDLUtil.h" />
     <ClInclude Include="Source\Utilities\Singleton.h" />
+    <ClInclude Include="Source\Utilities\String.h" />
     <ClInclude Include="Source\Utilities\Surface.h" />
     <ClInclude Include="Source\Utilities\System.h" />
     <ClInclude Include="Source\Utilities\Texture.h" />
@@ -157,6 +164,7 @@
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\States\MainMenuState.cpp" />
+    <ClCompile Include="Source\Systems\CameraSystem.cpp" />
     <ClCompile Include="Source\Systems\DebugSystem.cpp" />
     <ClCompile Include="Source\Systems\InputSystem.cpp" />
     <ClCompile Include="Source\Systems\RenderSystem.cpp" />
@@ -205,6 +213,9 @@
     <ClCompile Include="Source\Utilities\Vector4.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Config.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

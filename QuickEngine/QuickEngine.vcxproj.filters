@@ -44,6 +44,15 @@
     <Filter Include="ThirdParty\EntityX\tags">
       <UniqueIdentifier>{2dc62666-e554-4634-946d-dd894458b78c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Configurations">
+      <UniqueIdentifier>{295fbd23-ab6d-4546-a974-53f5e2d131a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enumerations">
+      <UniqueIdentifier>{cfa419b9-a76e-4ce6-9df6-b7b7b745a98a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Events">
+      <UniqueIdentifier>{36c89fa9-08d5-4737-a61b-fe92214d5487}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\BaseComponent.h">
@@ -63,9 +72,6 @@
     </ClInclude>
     <ClInclude Include="Source\Components\ComponentType.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Utilities\Camera.h">
-      <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities\Color.h">
       <Filter>Utilities</Filter>
@@ -89,9 +95,6 @@
       <Filter>States</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities\EntityEvents.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Utilities\Event.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities\Mesh.h">
@@ -229,20 +232,44 @@
     <ClInclude Include="Source\Systems\RenderSystem.h">
       <Filter>Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\Systems.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Systems\TransformSystem.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="Source\ThirdParty\EntityX\help\Timers.h">
       <Filter>ThirdParty\EntityX\help</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utilities\Camera.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enumerations\CameraProjection.h">
+      <Filter>Enumerations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\TransformEvents.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\String.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\Systems.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\InputEvents.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\Events.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdParty\ThirdParties.h">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\WindowEvents.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\CameraSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Utilities\Camera.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Utilities\Config.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
@@ -330,5 +357,16 @@
     <ClCompile Include="Source\ThirdParty\EntityX\help\Timers.cc">
       <Filter>ThirdParty\EntityX\help</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utilities\Camera.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\CameraSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Config.txt">
+      <Filter>Configurations</Filter>
+    </Text>
   </ItemGroup>
 </Project>

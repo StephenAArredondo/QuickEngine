@@ -1,7 +1,6 @@
 #ifndef __MODEL_H__
 #define __MODEL_H__
 
-#include <Common.h>
 #include "Mesh.h"
 
 class Model
